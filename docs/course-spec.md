@@ -67,6 +67,7 @@ By the end of this workshop, participants will be able to:
 
 General notes
 - Modules lead with recap , end with teaser to next module
+- encourge "if yours is working look to help others"
 
 ### Opening (20 minutes)
 - Welcome, introductions, environment check
@@ -75,8 +76,6 @@ General notes
 - Demo An anti-example of chatgpt hallucinating on questions regarding our data.
 - Notes:
     - Use accessible metaphors
-
-### 5 min break  
 - which includes env validation checks (verify_setup.py works) 
 
 ### Module 1: Ingest & Embed (35 minutes)
@@ -90,29 +89,30 @@ General notes
 - **Checkpoint**: "Ingestion complete! X chunks created"
 - Introduce ChromaDB CLI browser
 
+## 5 min (minimum) break
+
 ### Module 2: Query & Retrieve (30 minutes)
 - Explain similarity search (whiteboard/slide moment)
 - Live code-along: query function
   - Encode question as embedding
   - Search ChromaDB for similar chunks
   - Return top results with metadata
+  - RAG params: top k , similarity score, etc.
 - Interactive exercise: participants write queries
 - Discuss results and introduce metadata filtering
 
-[TODO: merge next 2, bring in the LLM as part of the chat experience. too complex to bring in LLM SDK in the code-only expereince]
-### Module 3: Generate Responses (15 minutes)
-- Connect retrieval to LLM
-- **Default API**: Google Gemini or Groq (free tier, no credit card)
-- Live code-along: RAG loop (retrieve → prompt → generate)
+### Module 3: Connect to Chat (20 minutes)
+- NOTE: This will leverage their API key,
+  - Google Gemini (free tier, no credit card, caveot: Google needs to know who you are)
+  - Support a few more, Anthropic, OpenAI
+- Demo running, and have them run app
+  - address any run issues, if extensive, have them buddy up. 
 - Test with questions
-- **Checkpoint solution distributed**
-
-### Module 4: Connect to Chat (15 minutes)
-- Brief code tour of pre-built app
-- Live code-along: wire up RAG backend
-- Run app: `streamlit run app.py`
-- **Moment of delight**: Chat with your own documents
+    - have them repeat the side by compaison
+    - ask a question out of context (the resp depends on the LLM itself, but also the steering in the system promt.)
+- Show example of the the entire prompt going the the LLM.
 - Q&A : best placed here as they have just finished. adapt wrapup as needed. This keeps it more workshop, less lecture.
+
 
 ### Wrap-Up (8 minutes)
 - Recap: ingest → embed → retrieve → generate → chat UI
