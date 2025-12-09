@@ -54,41 +54,29 @@ By the end of this workshop, participants will be able to:
 **Purpose**: Ensure participants arrive with a working environment and baseline understanding.
 
 **Part A: Environment Setup (Required)**
-- Install Python 3.11+
 - Install UV package manager
+- Use UV to install python if needed.
 - Clone the workshop repository
 - Run verification script (`verify_setup.py`)
-- Run corpus validation script (`check_corpus.py`) against sample corpus
+- [TODO, maybe not, rather supply the docs to use] Run corpus validation script (`check_corpus.py`) against sample corpus
 - Troubleshooting guide for common issues
-
-**Part B: Conceptual Foundation (10-15 minute read)**
-- The problem: "You have documents. You want to ask questions about them."
-- What RAG does at a high level (no implementation details)
-- Why vector embeddings matter (conceptual)
-- Preview of what we'll build (screenshot of final Streamlit chat)
-- Privacy note: Workshop uses cloud APIs by default; we'll demo a fully local option (Ollama)
-
-**Part C: Optional Preparation**
-- Link to blog post for deeper context
-- Instructions for preparing own corpus + running `check_corpus.py` to validate
-- Ollama installation for local-only participants
-
-**Delivery**: Markdown file in workshop repo, sent to registrants upon signup.
 
 ---
 
 ## Live Session Structure
 
-### Opening (10 minutes)
+### Opening (20 minutes)
 - Welcome, introductions, environment check
 - Helper assists stragglers with setup
 - Brief recap of pre-work concepts
-- Demo the end state (finished Streamlit chat)
+- Demo An anti-example of chatgpt hallucinating on questions regarding our data.
+- Notes:
+    - Use accessible metaphors
 
 ### Module 1: Ingest & Embed (35 minutes)
 - Walkthrough of sample corpus structure
 - Live code-along: ingestion script
-  - Load markdown files
+  - Load markdown files (callout a similar (any doc format, (example: PDF) workflow)
   - Extract content and metadata (frontmatter)
   - Chunk content (fixed-size with overlap)
   - Create embeddings and store in ChromaDB
@@ -124,12 +112,19 @@ By the end of this workshop, participants will be able to:
 - Swap in own corpus
 - Experiment with retrieved chunk count
 
-### Wrap-Up (5 minutes)
+### Wrap-Up (8 minutes)
 - Recap: ingest → embed → retrieve → generate → chat UI
 - Where to go next (embedding models, ChromaDB cloud, chunking strategies)
 - Resources and Q&A
 - Feedback collection
 
+### Key Take-aways
+- Understanding of the need for RAG
+  - LLM weights are locked (and what that means)
+  - Clear on the concept of the Context window (only mechanism to streer the LLM), limits, mention of Context Rot 
+- Clear Next steps options
+  - Extending the code they have, Chroma Cloud,Supabase, A "cloud" offering (AWS, GCP, Azure)
+  - No code options, Notebook LM
 ---
 
 ## Materials & Deliverables
