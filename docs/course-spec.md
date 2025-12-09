@@ -65,6 +65,9 @@ By the end of this workshop, participants will be able to:
 
 ## Live Session Structure
 
+General notes
+- Modules lead with recap , end with teaser to next module
+
 ### Opening (20 minutes)
 - Welcome, introductions, environment check
 - Helper assists stragglers with setup
@@ -72,6 +75,9 @@ By the end of this workshop, participants will be able to:
 - Demo An anti-example of chatgpt hallucinating on questions regarding our data.
 - Notes:
     - Use accessible metaphors
+
+### 5 min break  
+- which includes env validation checks (verify_setup.py works) 
 
 ### Module 1: Ingest & Embed (35 minutes)
 - Walkthrough of sample corpus structure
@@ -93,61 +99,59 @@ By the end of this workshop, participants will be able to:
 - Interactive exercise: participants write queries
 - Discuss results and introduce metadata filtering
 
+[TODO: merge next 2, bring in the LLM as part of the chat experience. too complex to bring in LLM SDK in the code-only expereince]
 ### Module 3: Generate Responses (15 minutes)
 - Connect retrieval to LLM
 - **Default API**: Google Gemini or Groq (free tier, no credit card)
 - Live code-along: RAG loop (retrieve → prompt → generate)
 - Test with questions
-- **Demo Ollama local option**
 - **Checkpoint solution distributed**
 
-### Module 4: Connect to Streamlit Chat (15 minutes)
-- Brief code tour of pre-built Streamlit app
+### Module 4: Connect to Chat (15 minutes)
+- Brief code tour of pre-built app
 - Live code-along: wire up RAG backend
 - Run app: `streamlit run app.py`
 - **Moment of delight**: Chat with your own documents
-
-### Exploration & Customization (5 minutes)
-- Ask different questions
-- Swap in own corpus
-- Experiment with retrieved chunk count
+- Q&A : best placed here as they have just finished. adapt wrapup as needed. This keeps it more workshop, less lecture.
 
 ### Wrap-Up (8 minutes)
 - Recap: ingest → embed → retrieve → generate → chat UI
 - Where to go next (embedding models, ChromaDB cloud, chunking strategies)
-- Resources and Q&A
-- Feedback collection
+- Resources (will be in repo, just call it out)
+- Collect Feedback for follow up (survey ?)
 
 ### Key Take-aways
 - Understanding of the need for RAG
   - LLM weights are locked (and what that means)
   - Clear on the concept of the Context window (only mechanism to streer the LLM), limits, mention of Context Rot 
 - Clear Next steps options
+  - Swap in own corpus
+  - chunking options
   - Extending the code they have, Chroma Cloud,Supabase, A "cloud" offering (AWS, GCP, Azure)
   - No code options, Notebook LM
+  
 ---
 
 ## Materials & Deliverables
 
 ### 1. Workshop Repository (GitHub)
 - `verify_setup.py` — pre-work environment verification
-- `check_corpus.py` — corpus format validation
 - Sample corpus (curated markdown files with frontmatter)
-- Starter code with TODOs for live coding
-- Checkpoint solutions (tagged branches)
+- ~~Starter code with TODOs for live coding~~
+- ~~Checkpoint solutions (tagged branches)~~
 - Complete working solution
-- Pre-built Streamlit chat app
+- Pre-built chat app (Python, HTML, vanilla JS)
 - `.env.example` with API key placeholders
 - README with setup instructions
 
 ### 2. Pre-Work Document
-- Environment setup guide
-- Corpus validation instructions
-- Conceptual primer
-- API key setup (Gemini/Groq free tier)
-- Optional: Ollama installation, bring-your-own-corpus instructions
+- Environment setup guide (UV and run `verify_setup.py`)
+- ~~Corpus validation instructions~~
+- Course overveiw ~~Conceptual primer~~
+- API key setup (existing or recomend Gemini free tier)
+- ~~Optional: Ollama installation, bring-your-own-corpus instructions~~
 
-### 3. Slide Deck (Minimal)
+### 3. Slide Deck (Minimal, more workshop less lecture)
 - Title / agenda
 - "What is RAG" diagram
 - Similarity search visualization
@@ -171,6 +175,8 @@ By the end of this workshop, participants will be able to:
 
 ## Research Links
 
+[TODO: Add more, better links]
+
 - [ChromaDB Documentation](https://docs.trychroma.com/docs/overview/introduction) — primary vector database used in workshop
 - [ChromaDB CLI Tools](https://docs.trychroma.com/docs/cli/install) — for collection browsing demo
 - [Weaviate Chunking Strategies Guide](https://weaviate.io/blog/chunking-strategies-for-rag) — reference for chunking concepts
@@ -179,8 +185,3 @@ By the end of this workshop, participants will be able to:
 - [Ollama](https://ollama.ai/) — local LLM for privacy-conscious participants
 - [Streamlit Documentation](https://docs.streamlit.io/) — chat UI framework
 
----
-
-## Source Material
-
-This course design is adapted from: [[AlteredCraft/Altered Craft Publications/LongFormWriting/Posts in process or complete/Local RAG/post content|Two Years of Writing, One Afternoon of Code]]
