@@ -19,13 +19,13 @@
 By the end of this workshop, participants will be able to:
 1. Explain what RAG is and the problems it solves (covered in pre-work)
 2. Ingest documents into a ChromaDB vector database with appropriate chunking
-3. Query the vector database and understand how similarity search works
-4. Connect their RAG backend to a chat interface for conversational document search
+3. Query the vector database and understand how similarity search works (just in Python))
+4. Connect their RAG backend to a chat interface (LLM) for conversational document search
 5. Identify next steps for extending their RAG (different embedders, cloud deployment, metadata filtering)
 
 **What Participants Walk Away With**:
 - A working local RAG system they built themselves
-- A Streamlit chat interface connected to their RAG
+- A chat interface connected to their RAG
 - Understanding of the core RAG loop (ingest → embed → retrieve → generate)
 - A codebase they can extend with their own documents
 - Conceptual foundation to evaluate RAG tools and frameworks
@@ -70,36 +70,47 @@ General notes
 - encourge "if yours is working look to help others"
 
 ### Opening (20 minutes)
+{{ 
+High level overview, here is how the R, A, G work together 
+might expand the timeframe to 30??
+hint at 'context rot' (chromadb paper)
+- improve the coverage of the key concepts here, keep it tight, just enough to orient the learner
+}}
+
 - Welcome, introductions, environment check
 - Helper assists stragglers with setup
 - Brief recap of pre-work concepts
 - Demo An anti-example of chatgpt hallucinating on questions regarding our data.
 - Notes:
     - Use accessible metaphors
-- which includes env validation checks (verify_setup.py works) 
+- which includes env validation checks (verify_setup.py works)
+
 
 ### Module 1: Ingest & Embed (35 minutes)
+{{ keep the corpus txt }}
 - Walkthrough of sample corpus structure
 - Live code-along: ingestion script
   - Load markdown files (callout a similar (any doc format, (example: PDF) workflow)
   - Extract content and metadata (frontmatter)
   - Chunk content (fixed-size with overlap)
-  - Create embeddings and store in ChromaDB
+  - Create embeddings and store in ChromaDB {{ create-or-use }}
 - Run ingest against sample corpus
 - **Checkpoint**: "Ingestion complete! X chunks created"
-- Introduce ChromaDB CLI browser
+- [if time] Introduce ChromaDB CLI browser
 
 ## 5 min (minimum) break
 
 ### Module 2: Query & Retrieve (30 minutes)
 - Explain similarity search (whiteboard/slide moment)
+- Sililar to SQL, if they have expereince
 - Live code-along: query function
   - Encode question as embedding
   - Search ChromaDB for similar chunks
-  - Return top results with metadata
+  - Return top results with metadata (set limit)
   - RAG params: top k , similarity score, etc.
 - Interactive exercise: participants write queries
 - Discuss results and introduce metadata filtering
+- Hint at _Reranker_ to inform them there are approached to overome the challenges here.
 
 ### Module 3: Connect to Chat (20 minutes)
 - NOTE: This will leverage their API key,
@@ -172,6 +183,15 @@ General notes
 - Escalation path
 
 ---
+
+## Notes to integrate
+- Have a live parking lot (collect topics , keep the course moving
+- [embrace transparency, learning tool] Have a {debug window for the Chat client} + add the "generate memaid diagram" + RAG params: top k , similarity score, etc.
+- Add token count and cost
+- Keep it dump, make a "RAG" call on each request.
+- Mitigate folks getting stuck, have completion starting point.
+- Settle on LLM access provider, needs to be free, no cc needed.
+- Final big picture of the entire system, calling out the "tuning" opertunities for that system. 
 
 ## Research Links
 
