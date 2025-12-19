@@ -192,7 +192,8 @@ hint at 'context rot' (chromadb paper)
 - Keep it dump, make a "RAG" call on each request.
 - Mitigate folks getting stuck, have completion starting point.
 - Settle on LLM access provider, needs to be free, no cc needed.
-- Final big picture of the entire system, calling out the "tuning" opertunities for that system. 
+- Final big picture of the entire system, calling out the "tuning" opertunities for that system.
+- As a fallback, create a OpenRouter api key (0$) cap.
 
 ## Research Links
 
