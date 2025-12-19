@@ -127,13 +127,14 @@ hint at 'context rot' (chromadb paper)
 
 ### Wrap-Up (8 minutes)
 - Recap: ingest → embed → retrieve → generate → chat UI
-- Where to go next (embedding models, ChromaDB cloud, chunking strategies)
-- Resources (will be in repo, just call it out)
+- Where to go next (with the cose base they have) (embedding models, ChromaDB cloud, chunking strategies)
+- Overall , where to go next (Enterprise solutions (bedrock, data bricks, etc) (will be in repo, just call it out)
+- If time, look to live parking lot
 - Collect Feedback for follow up (survey ?)
 
 ### Key Take-aways
 - Understanding of the need for RAG
-  - LLM weights are locked (and what that means)
+  - LM weights are locked (and what that means)
   - Clear on the concept of the Context window (only mechanism to streer the LLM), limits, mention of Context Rot 
 - Clear Next steps options
   - Swap in own corpus
