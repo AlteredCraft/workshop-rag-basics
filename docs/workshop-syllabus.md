@@ -75,7 +75,7 @@
 
 ## MODULE 1: INGEST & EMBED (20–55 minutes)
 
-![rag-flow-chart-databse](/Users/shigoto/Projects/GitHub Repos/workshop-rag-basics/docs/elements/rag-flow-chart-databse.png)
+![rag-flow-chart-databse](./elements/rag-flow-chart-databse.png)
 
 ### Learning Outcomes
 
@@ -117,7 +117,7 @@
 
 ## MODULE 2: QUERY & RETRIEVE (60–90 minutes)
 
-![rag-flow-chart-retrieval](/Users/shigoto/Projects/GitHub Repos/workshop-rag-basics/docs/elements/rag-flow-chart-retrieval.png)
+![rag-flow-chart-retrieval](./elements/rag-flow-chart-retrieval.png)
 
 ### Learning Outcomes
 
@@ -155,7 +155,7 @@
 
 ## MODULE 3: CONNECT TO CHAT (90–110 minutes)
 
-![rag-flow-chart-chat](/Users/shigoto/Projects/GitHub Repos/workshop-rag-basics/docs/elements/rag-flow-chart-chat.png)
+![rag-flow-chart-chat](./elements/rag-flow-chart-chat.png)
 
 ### Learning Outcomes
 
@@ -192,7 +192,7 @@
 
 ## WRAP-UP (110–120 minutes)
 
-![rag-flow-chart-extras](/Users/shigoto/Projects/GitHub Repos/workshop-rag-basics/docs/elements/rag-flow-chart-extras.png)
+![rag-flow-chart-extras](./elements/rag-flow-chart-extras.png)
 
 ### Learning Outcomes (Specific)
 
