@@ -12,7 +12,7 @@
 
 Large language models are powerful, but they hallucinate—confidently generating plausible-sounding information that isn't true. They also can't access your private documents, internal knowledge bases, or recent information outside their training data.
 
-Retrieval-Augmented Generation (RAG) solves this by giving LLMs a "context window steering lever." Instead of relying solely on trained knowledge, RAG retrieves relevant chunks from your own corpus and feeds them to the model at query time—grounding responses in actual source material.
+Retrieval-Augmented Generation (RAG) solves this by giving LLMs a "context window steering lever." Instead of relying solely on trained knowledge, RAG retrieves relevant chunks from your own corpus and feeds them to the model at query time, grounding responses in actual source material.
 
 In this hands-on workshop, you'll build a working RAG system from scratch. You'll ingest documents, generate embeddings, store them in a vector database, write similarity queries, and wire everything into a chat interface. By the end, you'll have a functional AI-powered document search running locally—and understand every piece of the pipeline.
 
