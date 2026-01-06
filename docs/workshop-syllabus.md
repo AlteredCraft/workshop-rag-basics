@@ -4,7 +4,7 @@
 
 **Course:** Build Your Own AI-Powered Document Search (2-hour hands-on workshop)
 **Prerequisites:** Python comfort + completed pre-work
-**Participants:** 5–10 developers
+**Participants:** 20-30 developers
 
 ---
 
@@ -15,7 +15,7 @@
 ### What Participants Will Do
 
 1. Clone workshop repository from GitHub
-2. Run environment verification script (`verify_setup.py`)
+2. Run environment verification script (`verify_setup.sh`)
    - Confirms Python installation, package manager (UV) installed, key packages available
    - Success: ✓ All checks passed
 3. Choose or prepare corpus:
@@ -29,12 +29,6 @@
 - Email pre-work guide 1 week before
 - Insturctors will be available at venue 30 minutes before event for possible support
 
-### Fallback Plan
-
-- **If pre-work incomplete:** Provide with generic pre-work set (??)
-- **If environment fails:** Have pre-built Docker container or cloud IDE backup ready
-
----
 
 ## LIVE SESSION: 120 MINUTES
 
@@ -60,7 +54,7 @@
 ### Content
 
 - Welcome, introductions, environment check
-- Helper assists stragglers with`verify_setup.py`
+- Helper assists with setup issues as needed
 - RAG conceptual primer: LLM hallucination demo → why RAG solves it (context window as steering lever)
 - RAG loop diagram: Ingest → Embed → Retrieve → Generate → Chat UI
 - Teaser: 30-second demo of finished chat app
