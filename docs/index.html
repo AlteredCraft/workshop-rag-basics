@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Own AI-Powered Document Search | RAG Workshop</title>
+  <meta name="description" content="Hands-on workshop: Build a working RAG system from scratch. Ingest documents, generate embeddings, query vector databases, and wire it all into a chat interface.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">RAG Workshop</a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#learn" class="nav__link">What You'll Learn</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#outline" class="nav__link">Course Outline</a>
+          </li>
+          <li class="nav__item">
+            <a href="#instructors" class="nav__link">Instructors</a>
+          </li>
+          <li class="nav__item">
+            <a href="#register" class="nav__cta">Register</a>
+          </li>
+        </ul>
+
+        <button class="nav__close" id="nav-close" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img src="images/hero.jpeg" alt="Developer at computer with documents transforming into vector embeddings" class="hero__image">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content container">
+        <h1 class="hero__title">Build Your Own AI-Powered Document Search</h1>
+        <p class="hero__subtitle">A hands-on workshop where you'll build a working RAG system from scratch—not slides, not theory, a system you built.</p>
+        <a href="#register" class="btn btn--primary btn--large">Save Your Spot</a>
+      </div>
+      <div class="hero__fade"></div>
+    </section>
+
+    <!-- What You'll Learn Section -->
+    <section class="section section--cream" id="learn">
+      <div class="container">
+        <h2 class="section__title">What You'll Learn</h2>
+        <div class="learn__grid">
+          <div class="learn__card">
+            <div class="learn__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4M12 8h.01"></path>
+              </svg>
+            </div>
+            <p class="learn__text">Understand why RAG exists and how it solves LLM hallucination and knowledge problems by grounding responses in your own documents.</p>
+          </div>
+          <div class="learn__card">
+            <div class="learn__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <p class="learn__text">Build a complete ingestion pipeline that chunks documents, generates embeddings, and stores vectors in ChromaDB.</p>
+          </div>
+          <div class="learn__card">
+            <div class="learn__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <p class="learn__text">Query your vector database using similarity search and interpret results with tuning parameters like top-k and thresholds.</p>
+          </div>
+          <div class="learn__card">
+            <div class="learn__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <p class="learn__text">Connect retrieval to a web chat interface, completing the full RAG loop from question to grounded answer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section--teal" id="about">
+      <div class="container">
+        <h2 class="section__title section__title--left">About This Workshop</h2>
+
+        <!-- Problem block with image -->
+        <div class="about__block">
+          <div class="about__block-content">
+            <p class="about__lead">Large language models (LLMs) are powerful, but they hallucinate—confidently generating plausible-sounding information that isn't true. They also can't access your private documents, internal knowledge bases, or recent information outside their training data.</p>
+          </div>
+          <div class="about__block-image">
+            <img src="images/problem.jpeg" alt="Developer frustrated by AI hallucinations and confusing outputs" class="about__image">
+          </div>
+        </div>
+
+        <!-- Solution block with image -->
+        <div class="about__block about__block--reverse">
+          <div class="about__block-content">
+            <p class="about__text">Retrieval-Augmented Generation (RAG) solves this by giving LLMs a "context window steering lever." Instead of relying solely on trained knowledge, RAG retrieves relevant chunks from your own corpus and feeds them to the model at query time, grounding responses in actual source material.</p>
+          </div>
+          <div class="about__block-image">
+            <img src="images/solution.jpeg" alt="Organized documents flowing into vector network" class="about__image">
+          </div>
+        </div>
+
+        <p class="about__text">In this hands-on workshop, you'll build a working RAG system from scratch. You'll ingest documents, generate embeddings, store them in a vector database, write similarity queries, and wire everything into a chat interface. By the end, you'll have a functional AI-powered document search running locally—and understand every piece of the pipeline.</p>
+
+        <div class="about__details">
+          <h3 class="about__details-title">In detail, you'll:</h3>
+          <ul class="about__list">
+            <li>Set up your environment and verify all dependencies using the provided setup script.</li>
+            <li>Load markdown documents, extract metadata (title, author, date), and chunk text with configurable overlap strategies.</li>
+            <li>Generate vector embeddings and store them in ChromaDB collections.</li>
+            <li>Encode queries and perform similarity search, interpreting scores and tuning retrieval parameters.</li>
+            <li>Launch a web-based Python chat app that completes the full RAG loop: query → retrieve → generate → display.</li>
+            <li>Inspect and edit system prompts to understand how retrieval and generation work together.</li>
+            <li>Diagnose common failures by distinguishing retrieval problems from generation problems.</li>
+          </ul>
+        </div>
+
+        <h3 class="about__details-title">Who should join?</h3>
+        <p class="about__text">Those who want hands-on experience building RAG systems. Basic familiarity with programming and working from the command line is recommended. Python is used for all coding exercises so some familiarity is helpful but the code in use will be minimal (focus is on the RAG workflow).</p>
+        <p class="about__note"><strong>Bring your own laptop:</strong> For this delivery we will not be able to provide computers to complete the exercises. Bring your MacOS or Windows laptop.</p>
+      </div>
+    </section>
+
+    <!-- Course Outline Section -->
+    <section class="section section--white" id="outline">
+      <div class="container">
+        <h2 class="section__title">Course Outline</h2>
+        <div class="outline__list">
+          <div class="outline__item">
+            <span class="outline__number">00</span>
+            <div class="outline__item-content">
+              <h3 class="outline__item-title">Opening</h3>
+              <p class="outline__item-text">Welcome, environment verification, RAG conceptual primer, hallucination demo, RAG loop diagram walkthrough</p>
+            </div>
+          </div>
+          <div class="outline__item">
+            <span class="outline__number">01</span>
+            <div class="outline__item-content">
+              <h3 class="outline__item-title">Ingest & Embed</h3>
+              <p class="outline__item-text">Corpus structure walkthrough, loading documents, extracting metadata, chunking strategies with overlap, embedding generation, storing in ChromaDB</p>
+            </div>
+          </div>
+          <div class="outline__item">
+            <span class="outline__number">02</span>
+            <div class="outline__item-content">
+              <h3 class="outline__item-title">Query & Retrieve</h3>
+              <p class="outline__item-text">Embedding space visualization, similarity search concepts, query encoding, ChromaDB query API, interpreting similarity scores, tuning parameters (top-k, thresholds, filters), introduction to reranking</p>
+            </div>
+          </div>
+          <div class="outline__item">
+            <span class="outline__number">03</span>
+            <div class="outline__item-content">
+              <h3 class="outline__item-title">Connect to Chat</h3>
+              <p class="outline__item-text">Python chat app architecture, API key setup, running the chat app, full RAG loop in action, system prompt inspection and editing, debugging retrieval vs. generation failures</p>
+            </div>
+          </div>
+          <div class="outline__item">
+            <span class="outline__number">04</span>
+            <div class="outline__item-content">
+              <h3 class="outline__item-title">Wrap-Up</h3>
+              <p class="outline__item-text">RAG architecture recap, next steps (custom corpus, parameter tuning, alternative models), deployment paths, advanced topics overview</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="outline__prework">
+          <h3 class="outline__prework-title">Pre-Work</h3>
+          <p class="outline__prework-text">Complete the following 24 hours before the workshop <span class="outline__prework-note">(details provided upon registration)</span>:</p>
+          <ul class="outline__prework-list">
+            <li>Clone the workshop repository from GitHub</li>
+            <li>Run the environment verification script (<code>verify_setup.sh</code> or <code>verify_setup.ps1</code>)</li>
+            <li>Set up API credentials (free-tier options available)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section class="section section--cream" id="instructors">
+      <div class="container">
+        <h2 class="section__title">Your Instructors</h2>
+        <div class="instructors__grid">
+          <div class="instructor__card">
+            <div class="instructor__avatar">
+              <span class="instructor__initial">D</span>
+            </div>
+            <h3 class="instructor__name">Daniel Dimick</h3>
+            <a href="https://www.linkedin.com/in/dpdimick" class="instructor__link" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+          <div class="instructor__card">
+            <div class="instructor__avatar">
+              <span class="instructor__initial">M</span>
+            </div>
+            <h3 class="instructor__name">Mark Joseph Wallaert</h3>
+            <a href="https://www.linkedin.com/in/markwallaert" class="instructor__link" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+          <div class="instructor__card">
+            <div class="instructor__avatar">
+              <span class="instructor__initial">S</span>
+            </div>
+            <h3 class="instructor__name">Sam Keen</h3>
+            <a href="https://www.linkedin.com/in/samkeen" class="instructor__link" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta" id="register">
+      <div class="cta__bg">
+        <img src="images/outcome.jpeg" alt="Complete working RAG chat system" class="cta__image">
+        <div class="cta__overlay"></div>
+      </div>
+      <div class="cta__content container">
+        <h2 class="cta__title">You Built This</h2>
+        <p class="cta__subtitle"><strong>Leave with a working AI-powered document search.</strong> Not slides. Not theory. <strong>A system you built.</strong></p>
+        <a href="https://lu.ma/EVENT_STUB" class="btn btn--primary btn--large" target="_blank" rel="noopener">Register Now</a>
+        <p class="cta__note"><span class="cta__seats">Seats are limited</span></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p class="footer__text">Questions? <a href="mailto:info+rag-course@alteredcraft.com" class="footer__link">Email the Course Team</a></p>
+        <p class="footer__copyright">&copy; 2026 AlteredCraft. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
