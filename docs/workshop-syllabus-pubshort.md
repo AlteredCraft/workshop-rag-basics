@@ -31,7 +31,7 @@ In this hands-on workshop, you'll build a working RAG system from scratch. You'l
 
 Those who want hands-on experience building RAG systems. Basic familiarity with programming and working from the command line is recommended.  Python is used for all coding exercises so some familiarity is helpful but the code in use will be minimal (focus is on the RAG workflow).
 
-**Bring your own laptop**: For this delivery we will not be able to provide computers to complete the exercises. Bring your MacOS or Windows laptop. 
+**Bring your own laptop**: For this delivery we will not be able to provide computers to complete the exercises. Bring your MacOS, Linus, or Windows laptop. 
 
 
 ## Pre-Work
