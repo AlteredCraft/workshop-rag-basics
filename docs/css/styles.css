@@ -207,18 +207,22 @@ code {
 }
 
 .nav__link {
+  display: block;
   font-size: var(--font-size-lg);
   font-weight: 500;
   color: var(--text-primary);
-  padding: var(--space-xs) 0;
+  padding: var(--space-sm) 0;
+  -webkit-tap-highlight-color: rgba(42, 157, 143, 0.2);
+  cursor: pointer;
 }
 
-.nav__link:hover {
+.nav__link:hover,
+.nav__link:active {
   color: var(--primary);
 }
 
 .nav__cta {
-  display: inline-block;
+  display: block;
   background-color: var(--primary);
   color: white;
   padding: 0.75rem 1.25rem;
@@ -226,9 +230,12 @@ code {
   font-weight: 600;
   text-align: center;
   margin-top: var(--space-sm);
+  -webkit-tap-highlight-color: rgba(42, 157, 143, 0.3);
+  cursor: pointer;
 }
 
-.nav__cta:hover {
+.nav__cta:hover,
+.nav__cta:active {
   background-color: var(--primary-dark);
   color: white;
 }
@@ -241,7 +248,9 @@ code {
   border: none;
   cursor: pointer;
   color: var(--text-primary);
-  padding: var(--space-xs);
+  padding: var(--space-sm);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
 }
 
 .nav__toggle {
@@ -249,8 +258,10 @@ code {
   border: none;
   cursor: pointer;
   color: var(--text-on-dark);
-  padding: var(--space-xs);
+  padding: var(--space-sm);
   transition: color 0.3s ease;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+  touch-action: manipulation;
 }
 
 .header.scrolled .nav__toggle {
