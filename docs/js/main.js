@@ -39,9 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   overlay.addEventListener('click', closeMenu);
 
-  // Close menu when clicking nav links
+  // Close menu and navigate when clicking nav links
   navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+
+      // Only handle internal anchor links
+      if (href && href.startsWith('#') && href.length > 1) {
+        e.preventDefault();
+        closeMenu();
+
+        // Small delay to let menu close animation complete
+        setTimeout(() => {
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 50);
+      } else {
+        // External links - just close menu
+        closeMenu();
+      }
+    });
   });
 
   // Close menu on escape key
