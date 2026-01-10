@@ -49,19 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         closeMenu();
 
-        // Small delay to let menu close animation complete
+        // Longer delay for iOS Safari scroll restoration after overflow:hidden removal
         setTimeout(() => {
           const target = document.querySelector(href);
           if (target) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
+            // scrollIntoView has better iOS Safari support than window.scrollTo
+            // scroll-padding-top in CSS handles header offset
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
             });
           }
-        }, 50);
+        }, 300);
       } else {
         // External links - just close menu
         closeMenu();
