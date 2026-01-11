@@ -39,33 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   overlay.addEventListener('click', closeMenu);
 
-  // Close menu and navigate when clicking nav links
+  // Close menu when clicking nav links
   navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-
-      // Only handle internal anchor links
-      if (href && href.startsWith('#') && href.length > 1) {
-        e.preventDefault();
-        closeMenu();
-
-        // Longer delay for iOS Safari scroll restoration after overflow:hidden removal
-        setTimeout(() => {
-          const target = document.querySelector(href);
-          if (target) {
-            // scrollIntoView has better iOS Safari support than window.scrollTo
-            // scroll-padding-top in CSS handles header offset
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }, 300);
-      } else {
-        // External links - just close menu
-        closeMenu();
-      }
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // Close menu on escape key
