@@ -49,7 +49,7 @@
 - Networking
 - Helper assists with setup issues as needed
 
-## OPENING (0–20 minutes)
+## OPENING (0–20 minutes) (Sam)
 
 ### Learning Outcomes
 
@@ -79,7 +79,7 @@
 
 ---
 
-## MODULE 1: INGEST & EMBED (20–55 minutes)
+## MODULE 1: INGEST & EMBED (20–55 minutes) (Mark)
 
 ![rag-flow-chart-databse](./elements/rag-flow-chart-databse.png)
 
@@ -124,7 +124,7 @@ Using our example chunking and injest harness
 
 ---
 
-## MODULE 2: QUERY & RETRIEVE (60–90 minutes)
+## MODULE 2: QUERY & RETRIEVE (60–90 minutes) (Daniel)
 
 ![rag-flow-chart-retrieval](./elements/rag-flow-chart-retrieval.png)
 
@@ -163,16 +163,16 @@ Using our example chunking and injest harness
 
 ---
 
-## MODULE 3: CONNECT TO CHAT (90–110 minutes)
+## MODULE 3: CONNECT TO CHAT (90–110 minutes) (Sam)
 
 ![rag-flow-chart-chat](./elements/rag-flow-chart-chat.png)
 
 ### Learning Outcomes
 
-- Setup and interact with a chat application
-- Understand full RAG pipeline from query to response
+- Setup and interact with a chat application (part of setup homework)
+- Understand full RAG pipeline from query to response (review, with more detail)
 - Recognize system prompt as steering mechanism
-- Distinguish retrieval problems from generation problems
+- Distinguish retrieval problems from generation problems (The RAG results are just additional context, so quality matters)
 
 ### Content
 
@@ -201,7 +201,7 @@ Using our example chunking and injest harness
 
 ---
 
-## WRAP-UP (110–120 minutes)
+## WRAP-UP (110–120 minutes) (Sam)
 
 ![rag-flow-chart-extras](./elements/rag-flow-chart-extras.png)
 
