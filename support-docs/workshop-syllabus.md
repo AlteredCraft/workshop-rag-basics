@@ -43,18 +43,23 @@
 
 ---
 
+## 12:00-12:30
+
+- Verify everyone's environment is working, Environment check,  5 min, Live (everyone runs verify_setup.py
+- Networking
+- Helper assists with setup issues as needed
+
 ## OPENING (0–20 minutes)
 
 ### Learning Outcomes
 
 - Understand why RAG exists and what problem it solves
-- Verify everyone's environment is working
+- Cover a map of the course to orient the learners
 - Get oriented to the RAG loop diagram
 
 ### Content
 
-- Welcome, introductions, environment check
-- Helper assists with setup issues as needed
+- Welcome, introductions, state the logistics of the course (1 speaker, 2 helpers)
 - RAG conceptual primer: LLM hallucination demo → why RAG solves it (context window as steering lever)
 - RAG loop diagram: Ingest → Embed → Retrieve → Generate → Chat UI
 - Teaser: 30-second demo of finished chat app
@@ -64,7 +69,6 @@
 | **Activity**    | **Duration** | **Format**                     |
 | --------------------- | ------------------ | ------------------------------------ |
 | Welcome & intros      | 3 min              | Group                                |
-| Environment check     | 5 min              | Live (everyone runs verify_setup.py) |
 | RAG primer            | 10 min             | Demo + discussion                    |
 | Teaser & loop diagram | 2 min              | Slide/whiteboard                     |
 
