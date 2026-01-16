@@ -88,9 +88,12 @@
 - Parse document formats and extract metadata
 - Explain chunking strategy and why overlap matters
 - Describe the embedding process and what vectors represent
+- Discusss metadata of items in chromadb (how we manage it: frontmatter)
 - Use ChromaDB API to store and manage collections
 
 ### Content
+
+Using our example chunking and injest harness
 
 - Corpus structure walkthrough (markdown + frontmatter)
 - Load documents from directory
@@ -104,10 +107,9 @@
 | **Activity**             | **Duration** | **Format**                      |
 | ------------------------------ | ------------------ | ------------------------------------- |
 | Corpus walkthrough             | 5 min              | Live demo                             |
-| Live code-along: Load          | 5 min              | Instructor codes; participants follow |
 | Live code-along: Chunk         | 7 min              | Instructor codes; participants follow |
-| Live code-along: Embed & store | 8 min              | Instructor codes; participants follow |
-| Checkpoint: Run ingest         | 5 min              | Participants run on own corpus        |
+| Inspect Chunks         | 7 min              | Instructor guides; participants follow |
+| Checkpoint: Run Ingest (Embed & store)       | 5 min              | Participants run on own corpus        |
 | Debrief discussion             | 5 min              | Whole group Q&A                       |
 
 ### Key Takeaways
@@ -147,9 +149,9 @@
 | **Activity**                    | **Duration** | **Format**                                          |
 | ------------------------------------- | ------------------ | --------------------------------------------------------- |
 | Whiteboard: Embedding space           | 8 min              | Instructor draws + explains (SQL analogy for experienced) |
-| Live code-along: Query encode         | 3 min              | Instructor codes                                          |
-| Live code-along: Retrieval Basic      | 5 min              | Instructor codes                                          |
-| Live code-along: Retrieval Strategies | 8 min              | Participants write 3 queries                              |
+| Live code-along: Query (encoded)      | 3 min              | Instructor codes                                          |
+| Live code-along: Retrieval Basic (leverage metadata filters, touch on keyword search)     | 5 min              | Instructor codes                                          |
+| Live code-along: Rerank | 8 min              |                               |
 | Tuning discussion                     | 2 min              | Potential alternative retrievers and finetuning           |
 
 ### Key Takeaways
