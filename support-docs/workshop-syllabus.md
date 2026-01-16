@@ -43,18 +43,23 @@
 
 ---
 
-## OPENING (0–20 minutes)
+## 12:00-12:30
+
+- Verify everyone's environment is working, Environment check,  5 min, Live (everyone runs verify_setup.py
+- Networking
+- Helper assists with setup issues as needed
+
+## OPENING (0–20 minutes) (Sam)
 
 ### Learning Outcomes
 
 - Understand why RAG exists and what problem it solves
-- Verify everyone's environment is working
+- Cover a map of the course to orient the learners
 - Get oriented to the RAG loop diagram
 
 ### Content
 
-- Welcome, introductions, environment check
-- Helper assists with setup issues as needed
+- Welcome, introductions, state the logistics of the course (1 speaker, 2 helpers)
 - RAG conceptual primer: LLM hallucination demo → why RAG solves it (context window as steering lever)
 - RAG loop diagram: Ingest → Embed → Retrieve → Generate → Chat UI
 - Teaser: 30-second demo of finished chat app
@@ -64,7 +69,6 @@
 | **Activity**    | **Duration** | **Format**                     |
 | --------------------- | ------------------ | ------------------------------------ |
 | Welcome & intros      | 3 min              | Group                                |
-| Environment check     | 5 min              | Live (everyone runs verify_setup.py) |
 | RAG primer            | 10 min             | Demo + discussion                    |
 | Teaser & loop diagram | 2 min              | Slide/whiteboard                     |
 
@@ -75,7 +79,7 @@
 
 ---
 
-## MODULE 1: INGEST & EMBED (20–55 minutes)
+## MODULE 1: INGEST & EMBED (20–55 minutes) (Mark)
 
 ![rag-flow-chart-databse](./elements/rag-flow-chart-databse.png)
 
@@ -84,9 +88,12 @@
 - Parse document formats and extract metadata
 - Explain chunking strategy and why overlap matters
 - Describe the embedding process and what vectors represent
+- Discusss metadata of items in chromadb (how we manage it: frontmatter)
 - Use ChromaDB API to store and manage collections
 
 ### Content
+
+Using our example chunking and injest harness
 
 - Corpus structure walkthrough (markdown + frontmatter)
 - Load documents from directory
@@ -100,10 +107,9 @@
 | **Activity**             | **Duration** | **Format**                      |
 | ------------------------------ | ------------------ | ------------------------------------- |
 | Corpus walkthrough             | 5 min              | Live demo                             |
-| Live code-along: Load          | 5 min              | Instructor codes; participants follow |
 | Live code-along: Chunk         | 7 min              | Instructor codes; participants follow |
-| Live code-along: Embed & store | 8 min              | Instructor codes; participants follow |
-| Checkpoint: Run ingest         | 5 min              | Participants run on own corpus        |
+| Inspect Chunks         | 7 min              | Instructor guides; participants follow |
+| Checkpoint: Run Ingest (Embed & store)       | 5 min              | Participants run on own corpus        |
 | Debrief discussion             | 5 min              | Whole group Q&A                       |
 
 ### Key Takeaways
@@ -118,7 +124,7 @@
 
 ---
 
-## MODULE 2: QUERY & RETRIEVE (60–90 minutes)
+## MODULE 2: QUERY & RETRIEVE (60–90 minutes) (Daniel)
 
 ![rag-flow-chart-retrieval](./elements/rag-flow-chart-retrieval.png)
 
@@ -143,9 +149,9 @@
 | **Activity**                    | **Duration** | **Format**                                          |
 | ------------------------------------- | ------------------ | --------------------------------------------------------- |
 | Whiteboard: Embedding space           | 8 min              | Instructor draws + explains (SQL analogy for experienced) |
-| Live code-along: Query encode         | 3 min              | Instructor codes                                          |
-| Live code-along: Retrieval Basic      | 5 min              | Instructor codes                                          |
-| Live code-along: Retrieval Strategies | 8 min              | Participants write 3 queries                              |
+| Live code-along: Query (encoded)      | 3 min              | Instructor codes                                          |
+| Live code-along: Retrieval Basic (leverage metadata filters, touch on keyword search)     | 5 min              | Instructor codes                                          |
+| Live code-along: Rerank | 8 min              |                               |
 | Tuning discussion                     | 2 min              | Potential alternative retrievers and finetuning           |
 
 ### Key Takeaways
@@ -157,16 +163,16 @@
 
 ---
 
-## MODULE 3: CONNECT TO CHAT (90–110 minutes)
+## MODULE 3: CONNECT TO CHAT (90–110 minutes) (Sam)
 
 ![rag-flow-chart-chat](./elements/rag-flow-chart-chat.png)
 
 ### Learning Outcomes
 
-- Setup and interact with a chat application
-- Understand full RAG pipeline from query to response
+- Setup and interact with a chat application (part of setup homework)
+- Understand full RAG pipeline from query to response (review, with more detail)
 - Recognize system prompt as steering mechanism
-- Distinguish retrieval problems from generation problems
+- Distinguish retrieval problems from generation problems (The RAG results are just additional context, so quality matters)
 
 ### Content
 
@@ -195,7 +201,7 @@
 
 ---
 
-## WRAP-UP (110–120 minutes)
+## WRAP-UP (110–120 minutes) (Sam)
 
 ![rag-flow-chart-extras](./elements/rag-flow-chart-extras.png)
 
