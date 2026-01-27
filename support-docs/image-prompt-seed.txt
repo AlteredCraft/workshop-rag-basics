@@ -1,0 +1,54 @@
+RAG Workshop — Image Generation Prompt Seed
+============================================
+Use this as the base style/constraint template for all workshop diagram images.
+Append diagram-specific LAYOUT and COMPONENTS sections for each image.
+
+See: modules/mod-3/img/contruction-of-context.jpeg for the reference image
+that established this style.
+
+[PROMPT SEED START]
+
+**WORK SURFACE:** Flat technical architecture diagram on a light gray background.
+Wide format (16:9 aspect ratio). Designed for a projected presentation slide,
+legible from the back of a 30-person room.
+
+**STYLE:** Clean, minimal, flat design with more visual character than a generic
+corporate diagram. Each zone or component uses a distinct shape to create visual
+variety (cylinders for databases, containers for applications, documents/scrolls
+for text artifacts, hexagons or chips for models/processors). Muted but
+distinguishable color palette — each zone has its own color identity. Sans-serif
+typeface, large clear labels. Professional but not sterile — the kind of diagram
+a senior engineer would sketch on a whiteboard, then clean up for a slide.
+
+**CONSTRAINTS:**
+- No title text anywhere in the diagram (titles go on the slide, not in the image)
+- No photorealism
+- No decorative elements (no clouds, gears, brains, robot faces, lightbulbs)
+- No 3D perspective — everything flat and straight-on
+- No gradients or drop shadows
+- No circuit boards, neural network visualizations, or glowing elements
+- No walls, barriers, doors, or doorways
+- Each zone must be a visually distinct shape — not identical rounded rectangles
+- Text must be large and legible at projection scale
+- 16:9 aspect ratio
+
+**INTERPRETATION:** If any element is ambiguous, favor simplicity and clarity
+over visual interest. When in doubt, remove rather than add. Distinct shapes
+and clear directional flow matter more than decoration.
+
+See attached image as example of color scheme and style
+
+## Image specifics
+
+[PROMPT SEED END]
+
+
+Usage
+-----
+For each diagram, combine this seed with a diagram-specific section:
+
+  [PROMPT SEED]
+  +
+  **LAYOUT:** [diagram-specific composition]
+  **COMPONENTS:** [diagram-specific element list]
+  **SOURCE MATERIAL:** [diagram-specific context]

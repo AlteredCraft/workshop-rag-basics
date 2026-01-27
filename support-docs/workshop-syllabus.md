@@ -34,7 +34,7 @@
 
 | **Segment**                    | **Duration** | **Outcome**                                       |
 | ------------------------------------ | ------------------ | ------------------------------------------------------- |
-| **Opening**                    | 0–20 min          | Everyone understands RAG problem, environment verified  |
+| **Opening**                    | 0–20 min          | Everyone understands RAG problem  |
 | **Module 1: Ingest & Embed**   | 20–55 min         | chunks created, stored in ChromaDB                      |
 | *Break*                            | 55–60 min         | —                                                      |
 | **Module 2: Query & Retrieve** | 60–90 min         | Participants write queries, interpret similarity search |

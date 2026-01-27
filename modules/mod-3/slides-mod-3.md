@@ -9,7 +9,9 @@ title: "Module 3: Connect to Chat"
 
 **Building the last mile — from retrieval to conversation**
 
-![bg right:40% contain](../../support-docs/elements/rag-flow-chart-chat.png)
+<!-- TODO: Replace with custom rag-chat-phase.png (chat/generation phase zoomed in).
+     See image-prompt-seed.txt for style guide. -->
+![center w:900](../opening/img/overall-rag-arch.jpeg)
 
 ---
 
@@ -76,6 +78,30 @@ Let's open the app.
 
 ---
 
+# Our Dataset: The Morn Chronicles
+
+A **Star Trek: Deep Space Nine** fan fiction — ~60,000 words of entirely invented content the LLM has never seen.
+
+| Morn Chronicles | Your World |
+|---|---|
+| Invented Lurian biology | Internal company docs |
+| Morn's backstory | Product documentation |
+| Warren family structure | Customer support knowledge base |
+| Heist details | Proprietary research & reports |
+
+**The common thread:** Content not in the LLM's training data. RAG is the bridge.
+
+<!--
+Speaker notes:
+- "Before we demo, let's talk about what data we're working with."
+- Quick show of hands: "Anyone a Star Trek fan?"
+- Explain Morn: beloved background character who never speaks on screen — we wrote a novel about his life
+- Walk through the table: each row maps invented content to a real-world equivalent
+- "This is a stand-in for YOUR data. Internal docs, product specs, support articles — anything the LLM hasn't seen."
+-->
+
+---
+
 <!-- _class: lead -->
 
 # Live Demo
@@ -86,6 +112,14 @@ Let's open the app.
 
 <!--
 Speaker notes:
+PRE-DEMO CHECK (2 min):
+- Verify your .env has a valid OPENROUTER_API_KEY
+- Helpers: spot-check a few participants' .env files
+- If anyone needs an API key: https://openrouter.ai/keys — free tier works for this workshop
+- Confirm the app is running: http://127.0.0.1:8000
+
+TERMINOLOGY: The syllabus says "debug window" — in the app it's the "Details" button. Same feature.
+
 DEMO FLOW:
 1. Show the main chat UI — point out sidebar (model, tokens, parameters, RAG toggle)
 2. Point out RAG is enabled, connected to Morn Chronicles collection
@@ -98,6 +132,33 @@ DEMO FLOW:
 6. Click Details to show the augmented message with <knowledge_base_context> tags
 7. "Look — the retrieved chunks ARE there. The LLM received them. But it had no instructions about what to do with them."
 8. KEY POINT: "This content was invented for this workshop. It doesn't exist anywhere in the LLM's training data. The ONLY way it can answer is through the retrieved context."
+-->
+
+---
+
+<!-- _class: lead -->
+
+# Launch Your App
+
+## Everyone: open your Chat RAG Explorer
+
+`http://127.0.0.1:8000`
+
+**Already running?** You should see the chat interface.
+**Not running?** Start it now:
+
+```bash
+cd chat-rag-explorer
+uv run python app.py
+```
+
+<!--
+Speaker notes:
+- "Now it's your turn — everyone open the app."
+- Give the room ~2 minutes to get running
+- Helpers: circulate and assist anyone who can't connect
+- Common issues: port conflict (another process on 8000), missing .env, ChromaDB not populated
+- Once most people have the UI open, move on — stragglers can catch up
 -->
 
 ---
@@ -212,6 +273,24 @@ SUGGESTED QUERIES (share these):
 - "Describe the planet Luria and the city of Luralis" — worldbuilding retrieval
 - "What happened during the Lissepian Mother's Day Heist?" — canon event + invented detail
 - "What is Captain Picard's favorite tea?" — NOT in this corpus, tests missing context handling
+
+DEBUGGING EXERCISE — Retrieval vs. Generation Problems:
+Walk through two scenarios to teach participants how to diagnose issues:
+
+1. RETRIEVAL FAILURE:
+   - Ask: "What is Captain Picard's favorite tea?"
+   - Click Details — the retrieved chunks are irrelevant (nothing about Picard in this corpus)
+   - Diagnosis: the retrieval system found nothing useful. This is a RETRIEVAL problem.
+   - Fix: add relevant documents, or adjust retrieval parameters.
+
+2. GENERATION FAILURE:
+   - Ask: "What is the Lurian First Molt?" using the basic "You are a helpful assistant" prompt
+   - Click Details — the retrieved chunks ARE relevant (correct Morn Chronicles content)
+   - But the response may be vague, miss details, or not cite sources
+   - Diagnosis: retrieval worked, but the LLM didn't use the context well. This is a GENERATION problem.
+   - Fix: improve the system prompt (switch to the RAG-optimized prompt).
+
+KEY POINT: "Always check Details first. Right chunks = generation problem. Wrong chunks = retrieval problem."
 -->
 
 ---
