@@ -9,9 +9,7 @@ title: "Module 3: Connect to Chat"
 
 **Building the last mile — from retrieval to conversation**
 
-<!-- TODO: Replace with custom rag-chat-phase.png (chat/generation phase zoomed in).
-     See image-prompt-seed.txt for style guide. -->
-![center w:900](../opening/img/overall-rag-arch.jpeg)
+![alt text](img/gen-phase.jpeg)
 
 ---
 
@@ -66,15 +64,54 @@ Speaker notes:
 
 ---
 
-# What We'll Do
+# The Host App: Your RAG Orchestrator
 
-1. **Tour the Chat RAG Explorer UI** — see the full interface
-2. **Send queries** — watch the RAG pipeline in action
-3. **Inspect the augmented message** — see exactly what the LLM receives
-4. **Compare system prompts** — swap from a basic prompt to a RAG-optimized one
-5. **Try your own corpus** *(if available from Module 2)*
+Your application — not the LLM — does all the work:
 
-Let's open the app.
+1. **Receives** the user's question
+2. **Queries ChromaDB** for relevant chunks
+3. **Assembles** the context window (system prompt + retrieved context + user message)
+4. **Sends** the complete prompt to the LLM
+
+The LLM never touches the database. The host app is the bridge.
+
+<!--
+Speaker notes:
+- "The host app is the orchestrator. It's a regular Python application."
+- "For those curious, this is all in app.py in the chat-rag-explorer repo."
+- Point at the architecture diagram from slide 3 — "The Host App box is doing ALL of this."
+- "The LLM is just a text-in, text-out API. Your app does the retrieval, the assembly, everything."
+-->
+
+---
+
+# The System Prompt: Guiding the LLM
+
+Your default system prompt tells the LLM how to use the retrieved context:
+
+```
+You are a helpful assistant.
+
+When context from a knowledge base is provided
+(in <knowledge_base_context> tags), use it to
+inform your response. Prioritize information from
+the provided context when answering questions.
+
+If the context doesn't contain relevant information,
+say so clearly rather than guessing.
+
+Cite the source document when possible.
+```
+
+This is the **only bridge** between the LLM and your RAG system.
+
+<!--
+Speaker notes:
+- Open Settings → System Prompt in the app to show this live
+- "This is what you all have as your default. The LLM knows to look for context tags, prioritize that context, cite sources, and admit when it doesn't know."
+- "Without this prompt, the LLM would receive the same retrieved chunks but have zero instructions about what to do with them."
+- "Remember: no direct connection. This prompt is the ONLY way the LLM knows RAG exists."
+-->
 
 ---
 
@@ -113,7 +150,7 @@ Speaker notes:
 <!--
 Speaker notes:
 PRE-DEMO CHECK (2 min):
-- Verify your .env has a valid OPENROUTER_API_KEY
+- Verify your .env has a valid OPENROUTER_API_KEY (It's been emailed to you via Luma)
 - Helpers: spot-check a few participants' .env files
 - If anyone needs an API key: https://openrouter.ai/keys — free tier works for this workshop
 - Confirm the app is running: http://127.0.0.1:8000
@@ -123,15 +160,14 @@ TERMINOLOGY: The syllabus says "debug window" — in the app it's the "Details" 
 DEMO FLOW:
 1. Show the main chat UI — point out sidebar (model, tokens, parameters, RAG toggle)
 2. Point out RAG is enabled, connected to Morn Chronicles collection
-3. Note the system prompt is currently "You are a helpful assistant" (non-RAG-aware)
+3. Note the system prompt is the RAG-aware one we just discussed
 4. Send first query: "What is the Lurian First Molt?"
    - This is entirely INVENTED content — it does NOT exist in LLM training data
-   - Without RAG, the LLM would have no idea. With RAG, the chunks are retrieved.
-   - But the basic prompt gives no instructions about the retrieved context.
-5. Get response — LLM may use context awkwardly or partially
+   - The ONLY way the LLM can answer is through the retrieved context
+5. Get response — should be good: uses context, cites sources
 6. Click Details to show the augmented message with <knowledge_base_context> tags
-7. "Look — the retrieved chunks ARE there. The LLM received them. But it had no instructions about what to do with them."
-8. KEY POINT: "This content was invented for this workshop. It doesn't exist anywhere in the LLM's training data. The ONLY way it can answer is through the retrieved context."
+7. "Look — the system prompt told the LLM to use this context. And it did."
+8. KEY POINT: "The host app retrieved the chunks, assembled the prompt, and the system prompt guided the LLM. That's the full RAG loop."
 -->
 
 ---
@@ -182,11 +218,13 @@ Open the **Details** view on any response to see the augmented message:
 </original_user_message>
 ```
 
-The RAG context was **already there**. The LLM just didn't have instructions to use it.
+The RAG context was **already there**. The system prompt told the LLM how to use it.
 
 ---
 
-# System Prompt: Before
+# Aside: Without a RAG-Aware Prompt
+
+What if the system prompt didn't mention the retrieved context?
 
 ```
 You are a helpful assistant.
@@ -195,60 +233,32 @@ You are a helpful assistant.
 - No mention of `<knowledge_base_context>`
 - No citation instructions
 - No guidance on what to do when context is missing
-- The LLM might use the retrieved context... or might not
+
+The LLM still **receives** the same retrieved chunks — but has no instructions to use them.
 
 <!--
 Speaker notes:
-- Open Settings → System Prompt tab
-- Show the current "Helpful Assistant" prompt
-- Point out there's nothing about RAG, context, or citations
-- "The LLM received all that context we just saw, but it has zero instructions about it"
--->
-
----
-
-# System Prompt: After
-
-```
-You are a helpful assistant.
-
-When context from a knowledge base is provided
-(in <knowledge_base_context> tags), use it to
-inform your response. Prioritize information from
-the provided context when answering questions.
-
-If the context doesn't contain relevant information,
-say so clearly rather than guessing.
-
-Cite the source document when possible.
-```
-
-Now the LLM **knows what to do** with the context it receives.
-
-<!--
-Speaker notes:
-- Switch to the RAG-optimized prompt in Settings
-- "Same retrieved context. Same user question. Different instructions."
-- Send the same query again: "What is the Lurian First Molt?"
-- Compare the two responses side by side
-- "This is the system prompt as a steering mechanism"
-- The Morn Chronicles content is invented — the LLM literally cannot answer without RAG context.
-  The system prompt determines HOW WELL it uses that context.
+- Switch to the basic prompt in Settings (instructor has this prepared)
+- Send the same query: "What is the Lurian First Molt?"
+- Show the degraded response — may partially use context, no citations, inconsistent
+- "Same retrieved context. Same LLM. The only difference is the system prompt."
+- "This is why the system prompt is the only bridge. Remove the instructions, and the LLM doesn't know what to do with the context it receives."
+- Switch back to the RAG-aware prompt before moving on
 -->
 
 ---
 
 # Same Context, Different Instructions
 
-| | Basic Prompt | RAG-Optimized Prompt |
+| | RAG-Optimized Prompt | Basic Prompt |
 |---|---|---|
-| **Uses retrieved context** | Maybe, inconsistently | Yes, prioritizes it |
-| **Citations** | None | References source docs |
-| **Missing info handling** | May hallucinate | Says "I don't know" |
-| **Output quality** | Unpredictable | Consistent, grounded |
+| **Uses retrieved context** | Yes, prioritizes it | Maybe, inconsistently |
+| **Citations** | References source docs | None |
+| **Missing info handling** | Says "I don't know" | May hallucinate |
+| **Output quality** | Consistent, grounded | Unpredictable |
 
 The **only thing that changed** was the system prompt.
-The retrieved context was identical.
+The retrieved context was identical. The host app did the same work.
 
 ---
 
@@ -320,23 +330,30 @@ Speaker notes:
 
 # Key Takeaways
 
-- The LLM has **no direct connection** to your vector database
-- RAG = retrieve text, paste it into the prompt
+- The **host app** (`app.py`) is the orchestrator — the LLM has no direct connection to your database
+- RAG = host app retrieves text, assembles the prompt, sends to the LLM
 - The **context window** is the only door to the LLM
-- The **system prompt** steers how the LLM uses that context
+- The **system prompt** is the only bridge — it tells the LLM how to use the retrieved context
 - Full pipeline visibility (Details view) lets you **debug** whether a problem is retrieval or generation
 
 ---
 
-# What's Next?
+# What's Next: Extending the RAG Explorer
 
-This app is a **starting point**.
+The Chat RAG Explorer is a **learning tool** — here's where to take it next:
 
-Everything you've seen today — ingestion, embedding, retrieval, chat — is a foundation you can extend:
+- **Multiple Collections** — query different datasets, compare results
+- **Hybrid Search** — combine keyword + semantic retrieval for better results
+- **MCP Integration** — make the LLM aware of search capabilities via system prompt, or go further with MCP tools
+- **Agent Skills** — automated retrieval strategies that adapt to the query
 
-- Swap in your own documents
-- Tune chunking and retrieval parameters
-- Try different models and system prompts
-- Deploy beyond localhost
+We'll talk about the bigger picture in the **Wrap-Up**.
 
-We'll cover these paths in the **Wrap-Up**.
+<!--
+Speaker notes:
+- "This app is intentionally simple. These are the natural next additions."
+- "Multiple collections means you could search docs AND support tickets from one interface."
+- "Hybrid search pairs what we built (semantic) with traditional keyword search."
+- "MCPs and Agent Skills are how you make the LLM more active — instead of just receiving context, it can request specific searches."
+- "We'll cover the broader learning path in Wrap-Up."
+-->

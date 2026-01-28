@@ -69,7 +69,18 @@
 - Maybe
 - No
 
-### Q12. How did you hear about this workshop? *(Optional)*
+### Q12. What topics would you like to learn more about in future workshops?
+- **Type:** Checkboxes (select all that apply)
+- MCP (Model Context Protocol) — giving LLMs access to tools and external services
+- Agent Skills — autonomous AI workflows that chain multiple steps
+- Advanced RAG techniques (reranking, hybrid search, fine-tuning)
+- Deployment & production (scaling, managed services, monitoring)
+- Other (please specify below)
+
+### Q13. Any other topics you'd like to see? *(Optional)*
+- **Type:** Short answer
+
+### Q14. How did you hear about this workshop? *(Optional)*
 - **Type:** Multiple choice
 - Meetup group
 - Word of mouth
